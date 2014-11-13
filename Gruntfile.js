@@ -1,5 +1,5 @@
 /*
- * grunt-game-builder
+ * grunt-springroll
  *
  * Copyright (c) 2014 CloudKid
  * Licensed under the MIT license.

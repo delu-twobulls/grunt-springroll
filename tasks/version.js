@@ -1,7 +1,7 @@
 module.exports = {
 	options : {
 		files : {
-			'build.json' : 'version',
+			'springroll.json' : 'version',
 			'bower.json' : 'version',
 			'deploy/index.html' : function(contents, version){
 				return contents.replace(

@@ -1,6 +1,6 @@
 /**
-*  Encapsulate the build.json format functionality
-*  this converts the build.json file into useable file lists
+*  Encapsulate the springroll.json format functionality
+*  this converts the springroll.json file into useable file lists
 *  for running tasks on.
 */
 module.exports = function(grunt, options)
@@ -9,7 +9,7 @@ module.exports = function(grunt, options)
 	var _ = require('lodash');
 
 	// The name of the build file
-	var filename = options.cwd + '/' + (options.buildFile || 'build.json');
+	var filename = options.cwd + '/' + (options.buildFile || 'springroll.json');
 
 	// Filter an array of files and only return the javascript files
 	var isJS = function(file){ return /\.js$/.test(file); };
@@ -17,12 +17,12 @@ module.exports = function(grunt, options)
 	// Filter an array of files and only return CSS and LESS files
 	var isCSS = function(file){ return /\.(less|css)$/.test(file); };
 
-	// Check for build file
+	// Check for springroll file
 	if (!grunt.file.exists(filename))
 		grunt.fail.fatal('no ' + filename + ' file is found');
 
-	// Load the build file which contains the list of 
-	// library and project files to build
+	// Load the springroll file which contains the list of 
+	// library and project files to springroll
 	var file = grunt.file.readJSON(filename);
 
 	// Error checking for required fields and types
@@ -57,7 +57,7 @@ module.exports = function(grunt, options)
 		// The semantic version of the app
 		version: file.version,
 
-		// The name of the build file
+		// The name of the springroll file
 		file : filename,
 
 		js : {

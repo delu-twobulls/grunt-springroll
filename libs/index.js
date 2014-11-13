@@ -42,7 +42,7 @@ module.exports = function(grunt, options, undefined)
 		data: {
 
 			// The name of the library from the build file
-			build: require(path.join(__dirname, 'build-file.js'))(grunt, { 
+			build: require(path.join(__dirname, 'springroll-json.js'))(grunt, { 
 				cwd: cwd, 
 				buildFile : options.buildFile 
 			}),

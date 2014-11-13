@@ -28,14 +28,14 @@ module.exports = function(grunt)
 		// The version to set to
 		var version;
 
-		// Get the current version, the build.json is the most
+		// Get the current version, the springroll.json is the most
 		// reliable place to get it
-		var build = grunt.file.readJSON('build.json');
+		var config = grunt.file.readJSON('springroll.json');
 
 		// For semver format, replace the version
 		if (semver.valid(n))
 		{
-			if (n == build.version)
+			if (n == config.version)
 			{
 				grunt.fail.warn("Supplied version the same as the current version");
 			}
@@ -43,17 +43,17 @@ module.exports = function(grunt)
 		}
 		else if (types.indexOf(n) > -1)
 		{
-			version = semver.inc(build.version, n);
+			version = semver.inc(config.version, n);
 		}
 		else
 		{
 			grunt.fail.fatal("Argument on version task is not valid");
 		}
 
-		if (!semver.lt(build.version, version))
+		if (!semver.lt(config.version, version))
 		{
 			grunt.fail.warn("Attempting to revert to a lesser version (from " +
-				build.version + " to " + version + ")");
+				config.version + " to " + version + ")");
 		}
 
 		grunt.log.ok("Version updated to " + version);

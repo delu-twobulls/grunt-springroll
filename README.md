@@ -1,6 +1,6 @@
-# Grunt Project Builder [![Dependency Status](https://david-dm.org/CloudKidStudio/grunt-game-builder.svg)](https://david-dm.org/CloudKidStudio/grunt-game-builder) [![Build Status](https://travis-ci.org/CloudKidStudio/grunt-game-builder.svg)](https://travis-ci.org/CloudKidStudio/grunt-game-builder)
+# Grunt SpringRoll [![Dependency Status](https://david-dm.org/SpringRoll/grunt-springroll.svg)](https://david-dm.org/SpringRoll/grunt-springroll) [![Build Status](https://travis-ci.org/SpringRoll/grunt-springroll.svg)](https://travis-ci.org/SpringRoll/grunt-springroll)
 
-Grunt Project Builder is a Node plugin which provides initial project scaffolding and common build tasks for creating HTML projects. The plugin requires both [Grunt](http://gruntjs.com/) and [Bower](http://bower.io/) to be installed on the local system in order to build.
+Grunt SpringRoll is a Node plugin which provides common project build tasks for creating SpringRoll projects. The plugin requires both [Grunt](http://gruntjs.com/) and [Bower](http://bower.io/) to be installed on the local system in order to build.
 
 ## Requirements
 
@@ -10,37 +10,11 @@ There are a couple of tools that you'll need to install before we can create our
 * Install [Grunt](http://gruntjs.com/getting-started) `npm install -g grunt-cli`
 * Install [Bower](http://bower.io/#install-bower) `npm install -g bower`
 
-## Getting Started
-
-### 1. Create Project
-
-Start by creating an empty project folder and changing the working directory to that folder.
-
-```shell
-mkdir MyProject && cd MyProject
-```
-
-### 2. Install Plugin
-
-The installation of the plugin requires installing Grunt first and then the plugin. This will create an empty project template structure which you can start to customize.
-
-```shell
-npm install grunt grunt-game-builder
-```
-
-### 3. Developing
-
-To run the project in development mode (watches for any changes in files and re-builds) and launch a web-browser to preview your project, run this:
-
-```shell
-grunt dev & grunt run
-```
-
 ## Adding Dependencies
 
-Grunt Project Builder is designed to easily include external dependencies into your project.
+Grunt SpringRoll is designed to easily include external dependencies into your project.
 
-Modify the **bower.json** file to include additional libraries into your project. For more information about using Bower please visit the [website](http://bower.io). For instance, if you wanted to include [CreateJS](http://createjs.com), **bower.json** might look like this. Note that the _version_ and _name_ field is automatically updated from the **build.json** file.
+Modify the **bower.json** file to include additional libraries into your project. For more information about using Bower please visit the [website](http://bower.io). For instance, if you wanted to include [CreateJS](http://createjs.com), **bower.json** might look like this. Note that the _version_ and _name_ field is automatically updated from the **springroll.json** file.
 
 ```js
 {
@@ -57,7 +31,7 @@ Modify the **bower.json** file to include additional libraries into your project
 }
 ```
 
-Then, update **build.json** to list the files you'd like to include from the libraries.
+Then, update **springroll.json** to list the files you'd like to include from the libraries.
 
 ```js
 {
@@ -87,7 +61,9 @@ These are the list of grunt tasks for building the project.
 
 Task | Description
 ---|---
-**default** | Does a release build of the project and libraries
+**build** | Build the project and libraries in release mode.
+**build-dev** | Build the project and libraries in debug mode.
+**default** | Alias for **build** task.
 **dev** | Development mode to build the project, this watches source files and auto-rebuilds whenever there's a change in CSS, main JavaScript or assets.
 **dev-main** | Development mode which watches source JavaScript files only and auto-rebuilds whenever there's a change. Faster than **dev** because it excludes assets building.
 **assets** | Minify all assets JavaScript files
@@ -98,12 +74,11 @@ Task | Description
 **clean-libs** | Delete all downloaded Bower components and library build files
 **qa** | Build the project in debug mode and run in the web browser by running a NodeJS server
 **run** | Preview the deploy index.html file in a web browser by running a NodeJS server
-**build** | Compile a full build of the project and libraries. With no arguments, performs a release build. Calling it as **build:dev**, performs a debug build
-**version** | Control the project versioning, and update the version number in **build.json** and **bower.json**. This task requires a single argument, for instance, **version:1.0.0** (uses the [Semantic Version](http://semver.org/) format) or increment the version using **version:major**, **version:minor** or **version:patch**. Change the version _before_ doing a build.
+**version** | Control the project versioning, and update the version number in **springroll.json** and **bower.json**. This task requires a single argument, for instance, **version:1.0.0** (uses the [Semantic Version](http://semver.org/) format) or increment the version using **version:major**, **version:minor** or **version:patch**. Change the version _before_ doing a build.
 
 ## Build File
 
-The **build.json** file contains the list of all required JavaScript and CSS files in order to build the project. Below describes the different fields of this file.
+The **springroll.json** file contains the list of all required JavaScript and CSS files in order to build the project. Below describes the different fields of this file.
 
 Property | Type | Description
 ---|---|---
@@ -147,19 +122,19 @@ Structure | Description
 **./node_modules/** | The Node plugins required for the build process; this directory should be ignored by the versioning system
 **./src/** | The source JavaScript or CSS/LESS files needed to build the project
 **./bower.json** | The list of Bower dependencies
-**./build.json** | See above, the list of source files and libraries to build
+**./springroll.json** | See above, the list of source files and libraries to build
 **./Gruntfile.js** | Contains the Grunt automation tasks
 **./package.json** | The list of Node dependencies
 **./README.md** | The readme markdown file describing the project
 
 ## Plugin Options
 
-The Grunt Project Builder plugin can accept additional options. Here's an example to add additional arguments:
+The Grunt SpringRoll plugin can accept additional options. Here's an example to add additional arguments:
 
 ```js
 module.exports = function(grunt)
 {
-	require('grunt-game-builder')(grunt, {
+	require('grunt-springroll')(grunt, {
 		jsFolder : "deploy/js",
 		cssFolder : "deploy/css"
 	});
@@ -172,7 +147,7 @@ A _boolean_ defaults to true. If grunt.initConfig() is automatically called.
 
 ### options.buildFile
 
-A _string_ defaults to "build.json". The name of the JSON file which contains the JavaScript, CSS files to build. See the Build File above for more information about what this does.
+A _string_ defaults to "springroll.json". The name of the JSON file which contains the JavaScript, CSS files to build. See the Build File above for more information about what this does.
 
 ### options.distFolder
 
@@ -190,5 +165,5 @@ A _string_ defaults to "deploy/assets/css". The base output folder for CSS files
 
 The default **Gruntfile.js** can be extended easily to allow for custom tasks.
 
-* [Simple Extending](https://github.com/CloudKidStudio/grunt-game-builder/wiki/Simple-Extending)
-* [Advanced Extending](https://github.com/CloudKidStudio/grunt-game-builder/wiki/Advanced-Extending)
+* [Simple Extending](https://github.com/SpringRoll/grunt-springroll/wiki/Simple-Extending)
+* [Advanced Extending](https://github.com/SpringRoll/grunt-springroll/wiki/Advanced-Extending)

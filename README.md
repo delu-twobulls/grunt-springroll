@@ -160,10 +160,3 @@ A _string_ defaults to "deploy/assets/js". The base output folder for JavaScript
 ### options.cssFolder
 
 A _string_ defaults to "deploy/assets/css". The base output folder for CSS files (libraries.css and main.css).
-
-## Extending Gruntfile.js
-
-The default **Gruntfile.js** can be extended easily to allow for custom tasks.
-
-* [Simple Extending](https://github.com/SpringRoll/grunt-springroll/wiki/Simple-Extending)
-* [Advanced Extending](https://github.com/SpringRoll/grunt-springroll/wiki/Advanced-Extending)

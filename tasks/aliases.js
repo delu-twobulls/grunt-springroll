@@ -13,7 +13,7 @@ module.exports = function(grunt)
 			'Build the games and the libraries in debug mode', [
 				'clean:main',
 				'jshint:main',
-				'concat_sourcemap:main',
+				'concat:main',
 				'replace:main',
 				'clean:css',
 				'less:development',
@@ -39,7 +39,7 @@ module.exports = function(grunt)
 		grunt.registerTask(
 			'assets-debug',
 			'Combine, map all asset JS files uncompressed', 
-			['concat_sourcemap:assets']
+			['concat:assets']
 		);
 
 		grunt.registerTask(
@@ -57,7 +57,7 @@ module.exports = function(grunt)
 			'Build the games and the libraries in debug mode', [
 				'clean:main',
 				'jshint:main',
-				'concat_sourcemap:main',
+				'concat:main',
 				'replace:main',
 				'clean:css',
 				'less:development',
@@ -119,7 +119,7 @@ module.exports = function(grunt)
 		'Import using Bower and build debug versions of libraries', [
 			'clean:libraries',
 			'bower:install',
-			'concat_sourcemap:libraries',
+			'concat:libraries',
 			'less:libraries-debug'
 		]
 	);

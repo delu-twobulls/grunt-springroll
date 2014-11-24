@@ -160,3 +160,7 @@ A _string_ defaults to "deploy/assets/js". The base output folder for JavaScript
 ### options.cssFolder
 
 A _string_ defaults to "deploy/assets/css". The base output folder for CSS files (libraries.css and main.css).
+
+### options.data
+
+A _object_ defaults to `{}`. The data to set which can be accessible by all Grunt tasks, for instance `{ "name": "MyApp"}` would allow a substitution `<%= name %>` which would resolve to _MyApp_.

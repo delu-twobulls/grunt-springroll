@@ -12,7 +12,7 @@ module.exports = {
 		],
 		tasks: [
 			'jshint:main', 
-			'concat_sourcemap:main', 
+			'concat:main', 
 			'replace:main'
 		]
 	},
@@ -23,7 +23,7 @@ module.exports = {
 			'<%= build.file %>'
 		],
 		tasks: [
-			'concat_sourcemap:assets'
+			'concat:assets'
 		]
 	},
 	css: {

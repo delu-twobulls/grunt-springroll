@@ -127,7 +127,7 @@ Structure | Description
 **./package.json** | The list of Node dependencies
 **./README.md** | The readme markdown file describing the project
 
-## Plugin Options
+## Plugin Settings
 
 The Grunt SpringRoll plugin can accept additional options. Here's an example to add additional arguments:
 
@@ -135,32 +135,34 @@ The Grunt SpringRoll plugin can accept additional options. Here's an example to 
 module.exports = function(grunt)
 {
 	require('grunt-springroll')(grunt, {
-		jsFolder : "deploy/js",
-		cssFolder : "deploy/css"
+		options: {
+			jsFolder : "deploy/js",
+			cssFolder : "deploy/css"
+		}
 	});
 };
 ```
 
-### options.autoInit
+### settings.options.autoInit
 
 A _boolean_ defaults to true. If grunt.initConfig() is automatically called.
 
-### options.buildFile
+### settings.options.buildFile
 
 A _string_ defaults to "springroll.json". The name of the JSON file which contains the JavaScript, CSS files to build. See the Build File above for more information about what this does.
 
-### options.distFolder
+### settings.options.distFolder
 
 A _string_ defaults to "deploy". The base output folder where to save the compiled project files.
 
-### options.jsFolder
+### settings.options.jsFolder
 
 A _string_ defaults to "deploy/assets/js". The base output folder for JavaScript files (libraries.js and main.js).
 
-### options.cssFolder
+### settings.options.cssFolder
 
 A _string_ defaults to "deploy/assets/css". The base output folder for CSS files (libraries.css and main.css).
 
-### options.data
+### settings.*
 
-A _object_ defaults to `{}`. The data to set which can be accessible by all Grunt tasks, for instance `{ "name": "MyApp"}` would allow a substitution `<%= name %>` which would resolve to _MyApp_.
+Any additional arguments to be accessible by the Grunt cofnig. The data to set which can be accessible by all Grunt tasks, for instance `{ "name": "MyApp"}` would allow a substitution `<%= name %>` which would resolve to _MyApp_.

@@ -1,4 +1,4 @@
-module.exports = function(grunt, options, undefined)
+module.exports = function(grunt, settings, undefined)
 {
 	// The root plugin directory
 	var _ = require('lodash'),
@@ -6,7 +6,13 @@ module.exports = function(grunt, options, undefined)
 		loader = require('load-grunt-config'),
 		base = path.dirname(__dirname);
 	
-	options = options || {};
+	// Get the settings and options
+	settings = settings || {};
+	options = settings.options || {};
+
+	// Get the user options but ignore options
+	userData = _.cloneDeep(settings);
+	delete userData.options;
 
 	// Path to the main library-grunt folder
 	var pluginFolder = path.dirname(__dirname);
@@ -23,7 +29,7 @@ module.exports = function(grunt, options, undefined)
 	process.chdir(pluginFolder);
 
 	// The data arguments
-	var data = _.extend({
+	var data = _.extend(userData, {
 
 			// The name of the library from the build file
 			build: require(path.join(__dirname, 'springroll-json.js'))(grunt, { 
@@ -43,8 +49,7 @@ module.exports = function(grunt, options, undefined)
 
 			// Save the current working directory
 			cwd: projectDir
-		},
-		options.data || {}
+		}
 	);
 
 	// Separate grunt config files
@@ -100,7 +105,7 @@ module.exports = function(grunt, options, undefined)
 	}
 
 	// If we should called initConfig right away
-	var autoInit = options.autoInit !== undefined ? !!options.autoInit : true;
+	var autoInit = !_.isUndefined(options.autoInit) ? !!options.autoInit : true;
 
 	if (autoInit)
 	{

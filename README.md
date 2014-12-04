@@ -1,4 +1,4 @@
-# Grunt SpringRoll [![Dependency Status](https://david-dm.org/SpringRoll/grunt-springroll.svg)](https://david-dm.org/SpringRoll/grunt-springroll) [![Build Status](https://travis-ci.org/SpringRoll/grunt-springroll.svg)](https://travis-ci.org/SpringRoll/grunt-springroll)
+# Grunt SpringRoll [![Dependency Status](https://david-dm.org/SpringRoll/grunt-springroll.svg)](https://david-dm.org/SpringRoll/grunt-springroll) [![Build Status](https://travis-ci.org/SpringRoll/grunt-springroll.svg)](https://travis-ci.org/SpringRoll/grunt-springroll) [![npm version](https://badge.fury.io/js/grunt-springroll.svg)](http://badge.fury.io/js/grunt-springroll)
 
 Grunt SpringRoll is a Node plugin which provides common project build tasks for creating SpringRoll projects. The plugin requires both [Grunt](http://gruntjs.com/) and [Bower](http://bower.io/) to be installed on the local system in order to build.
 

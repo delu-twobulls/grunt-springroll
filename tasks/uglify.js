@@ -16,7 +16,8 @@ module.exports = {
 					"VERSION": "<%= build.version %>"
 				},
 				dead_code: true,
-				drop_console: true
+				drop_console: true,
+				pure_funcs: ['include', 'Debug.log', 'Debug.info', 'Debug.warn', 'Debug.debug', 'Debug.error']
 			}
 		}
 	},

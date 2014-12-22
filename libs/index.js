@@ -28,14 +28,17 @@ module.exports = function(grunt, settings, undefined)
 	var projectDir = process.cwd();
 	process.chdir(pluginFolder);
 
+	// The build file which contains all the list of files to build
+	var build = require(path.join(__dirname, 'springroll-json.js'))(grunt, { 
+		cwd: projectDir, 
+		buildFile : options.buildFile 
+	});
+
 	// The data arguments
 	var data = _.extend(userData, {
 
 			// The name of the library from the build file
-			build: require(path.join(__dirname, 'springroll-json.js'))(grunt, { 
-				cwd: projectDir, 
-				buildFile : options.buildFile 
-			}),
+			build: build,
 
 			// The deploy folder is the content that actually is for distribution
 			distFolder: options.distFolder || 'deploy',
@@ -102,6 +105,12 @@ module.exports = function(grunt, settings, undefined)
 		delete config.uglify.assets;
 		delete config.clean.assets;
 		delete config.concat.assets;
+	}
+
+	// If we have files to copy, add the copy tasks
+	if (grunt.config.get('hasCopy'))
+	{
+		config.copy = build.librariesCopy;
 	}
 
 	// If we should called initConfig right away

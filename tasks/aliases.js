@@ -104,25 +104,52 @@ module.exports = function(grunt)
 		]
 	);
 
-	grunt.registerTask(
-		'libs',
-		'Import external client-side dependencies using Bower', [
-			'clean:libraries',
-			'bower:install',
-			'uglify:libraries',
-			'less:libraries'
-		]
-	);
+	if (grunt.config.get('hasCopy'))
+	{
+		grunt.registerTask(
+			'libs',
+			'Import external client-side dependencies using Bower', [
+				'clean:libraries',
+				'bower:install',
+				'copy',
+				'uglify:libraries',
+				'less:libraries'
+			]
+		);
 
-	grunt.registerTask(
-		'libs-debug',
-		'Import using Bower and build debug versions of libraries', [
-			'clean:libraries',
-			'bower:install',
-			'concat:libraries',
-			'less:libraries-debug'
-		]
-	);
+		grunt.registerTask(
+			'libs-debug',
+			'Import using Bower and build debug versions of libraries', [
+				'clean:libraries',
+				'bower:install',
+				'copy',
+				'concat:libraries',
+				'less:libraries-debug'
+			]
+		);
+	}
+	else
+	{
+		grunt.registerTask(
+		'libs',
+			'Import external client-side dependencies using Bower', [
+				'clean:libraries',
+				'bower:install',
+				'uglify:libraries',
+				'less:libraries'
+			]
+		);
+
+		grunt.registerTask(
+			'libs-debug',
+			'Import using Bower and build debug versions of libraries', [
+				'clean:libraries',
+				'bower:install',
+				'concat:libraries',
+				'less:libraries-debug'
+			]
+		);
+	}
 
 	grunt.registerTask(
 		'qa',

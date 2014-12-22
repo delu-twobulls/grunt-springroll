@@ -6,7 +6,8 @@
 module.exports = function(grunt, options)
 {	
 	// Use underscore utilities
-	var _ = require('lodash');
+	var _ = require('lodash'),	
+		path = require('path');
 
 	// The name of the build file
 	var filename = options.cwd + '/' + (options.buildFile || 'springroll.json');
@@ -16,6 +17,9 @@ module.exports = function(grunt, options)
 
 	// Filter an array of files and only return CSS and LESS files
 	var isCSS = function(file){ return /\.(less|css)$/.test(file); };
+
+	// The list of files to copy
+	var librariesCopy = null;
 
 	// Check for springroll file
 	if (!grunt.file.exists(filename))
@@ -50,7 +54,30 @@ module.exports = function(grunt, options)
 	// Let other tasks know if we have assets
 	grunt.config.set('hasAssets', !_.isUndefined(file.assets));
 
+	// Check for files to copy
+	var hasCopy = !_.isUndefined(file.librariesCopy);
+	grunt.config.set('hasCopy', hasCopy);
+
+	// Format into format for grunt-contrib-copy
+	if (hasCopy)
+	{
+		librariesCopy = {};
+		_.each(file.librariesCopy, function(dest, src){
+			var id = path.basename(src)
+				.replace(/[^a-zA-Z0-9]/g, '')
+				.toLowerCase();
+
+			librariesCopy[id] = {
+				src: src,
+				dest: dest,
+				expand: true,
+				flatten: true
+			};
+		});
+	}
+
 	return {
+
 		// The name of the app
 		name: file.name,
 
@@ -59,6 +86,9 @@ module.exports = function(grunt, options)
 
 		// The name of the springroll file
 		file : filename,
+
+		// Files to copy
+		librariesCopy: librariesCopy,
 
 		js : {
 			// The collection of library files

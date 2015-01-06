@@ -9,9 +9,5 @@ module.exports = {
 	main: {
 		dest: '<%= jsFolder %>/main.js',
 		src: ['<%= build.js.mainDebug %>']
-	},
-	assets: {
-		dest: '<%= jsFolder %>/assets.js',
-		src: ['<%= build.js.assets %>']
 	}
 };

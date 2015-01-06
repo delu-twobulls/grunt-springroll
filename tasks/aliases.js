@@ -6,77 +6,32 @@ module.exports = function(grunt)
 		['build']
 	);
 
-	if (grunt.config.get('hasAssets'))
-	{
-		grunt.registerTask(
-			'build-dev',
-			'Build the games and the libraries in debug mode', [
-				'clean:main',
-				'jshint:main',
-				'concat:main',
-				'replace:main',
-				'clean:css',
-				'less:development',
-				'libs-debug',
-				'clean:assets',
-				'assets-debug',
-			]
-		);
-
-		grunt.registerTask(
-			'build',
-			'Build the games and the libraries in release mode', [
-				'clean:main',
-				'jshint:main',
-				'uglify:main',
-				'clean:css',
-				'less:release',
-				'libs',
-				'assets'
-			]
-		);
-
-		grunt.registerTask(
+	grunt.registerTask(
+		'build-dev',
+		'Build the games and the libraries in debug mode', [
+			'clean:main',
+			'jshint:main',
+			'concat:main',
+			'replace:main',
+			'clean:css',
+			'less:development',
+			'libs-debug',
 			'assets-debug',
-			'Combine, map all asset JS files uncompressed', 
-			['concat:assets']
-		);
+		]
+	);
 
-		grunt.registerTask(
-			'assets',
-			'Minify all asset JS files uncompressed', [
-				'clean:assets',
-				'uglify:assets'
-			]
-		);
-	}
-	else
-	{
-		grunt.registerTask(
-			'build-dev',
-			'Build the games and the libraries in debug mode', [
-				'clean:main',
-				'jshint:main',
-				'concat:main',
-				'replace:main',
-				'clean:css',
-				'less:development',
-				'libs-debug',
-			]
-		);
-
-		grunt.registerTask(
-			'build', 
-			'Build the games and the libraries in release mode', [
-				'clean:main',
-				'jshint:main',
-				'uglify:main',
-				'clean:css',
-				'less:release',
-				'libs'
-			]
-		);
-	}
+	grunt.registerTask(
+		'build',
+		'Build the games and the libraries in release mode', [
+			'clean:main',
+			'jshint:main',
+			'uglify:main',
+			'clean:css',
+			'less:release',
+			'libs',
+			'assets'
+		]
+	);
 
 	grunt.registerTask(
 		'dev',

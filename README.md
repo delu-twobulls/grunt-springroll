@@ -88,7 +88,7 @@ Property | Type | Description
 **libraries** | array | The list of external file dependencies imported by Bower. Note: the order of the files is how the output is built.
 **mainDebug** _(optional)_ | array | The same as `main` except that this file list is only used when building in `dev` task.
 **librariesDebug** _(optional)_ | array | The same as `libraries` except that this file list is only used when building in `dev` task.
-**assets** _(optional)_ | array | A list of published JavaScript files that should be minified and combined to create an `assets.js` file alongside main and libraries. The common use-case for this list is to minify large EaselJS assets exported from Flash to increase the **dev** task build time. Note: assets are not run through JS hinting.
+**assets** _(optional)_ | array, object | A list of published JavaScript files that should be minified and combined to create an `assets.js` file alongside main and libraries. The common use-case for this list is to minify large EaselJS assets exported from Flash to increase the **dev** task build time. Note: assets are not run through JS hinting. Multiple asset files can also be created where the key is the file name (without ".js" or path) and the value is the array of files.
 **librariesCopy** _(optional)_ | object | To copy library files (e.g., binary files, SWFs, fonts) into your project after Bower is done. The `librariesCopy` property is an object where the key is the original file and the value is the output destination folder. For instance: `{"components/soundjs/lib/FlashAudioPlugin.swf":"deploy/assets/swfs/"}`.
 
 ## Conditional Compiling

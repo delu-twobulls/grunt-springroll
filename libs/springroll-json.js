@@ -48,11 +48,35 @@ module.exports = function(grunt, options)
 	if (!_.isUndefined(file.mainDebug) && !_.isArray(file.mainDebug))
 		grunt.fail.fatal('"mainDebug" must be an array of files in ' + filename);
 
-	if (!_.isUndefined(file.assets) && !_.isArray(file.assets))
-		grunt.fail.fatal('"assets" must be an array of files in ' + filename);
+	var assets = null;
 
-	// Let other tasks know if we have assets
-	grunt.config.set('hasAssets', !_.isUndefined(file.assets));
+	// Check for assets, this can either be an array of files which
+	// outputs 
+	if (!_.isUndefined(file.assets))
+	{
+		if (!_.isArray(file.assets) && !_.isObject(file.assets))
+		{
+			grunt.fail.fatal('"assets" must be an array or object of files in ' + filename);
+		}
+		else 
+		{
+			assets = {};
+
+			// This was the old implementation where you had a single
+			// asset file. Unclear if we'll keep this in the future
+			if (_.isArray(file.assets))
+			{
+				assets.assets = _.filter(file.assets || "", isJS);
+			}
+			// More modern usage for multiple asset files
+			else if (_.isObject(file.assets))
+			{
+				_.each(file.assets, function(files, key){
+					assets[key] = _.filter(files || "", isJS);
+				});
+			}
+		}
+	}
 
 	// Check for files to copy
 	var hasCopy = !_.isUndefined(file.librariesCopy);
@@ -90,6 +114,9 @@ module.exports = function(grunt, options)
 		// Files to copy
 		librariesCopy: librariesCopy,
 
+		// The additional assets
+		assets: assets,
+
 		js : {
 			// The collection of library files
 			libraries : _.filter(file.libraries, isJS),
@@ -102,9 +129,6 @@ module.exports = function(grunt, options)
 
 			// The collection of source files in debug mode
 			mainDebug : _.filter(file.mainDebug || file.main, isJS),
-
-			//asset files (typically assets exported from flash as javascript)
-			assets: _.filter(file.assets || "", isJS)
 		},
 
 		css : {

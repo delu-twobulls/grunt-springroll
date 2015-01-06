@@ -97,15 +97,8 @@ module.exports = function(grunt, settings, undefined)
 	// Merge the configs
 	var config = _.extend(baseConfig, projectConfig);
 
-	// If we don't have assets, remove from the tasks
-	// this is determined by build-file.js
-	if (!grunt.config.get('hasAssets'))
-	{
-		delete config.watch.assets;
-		delete config.uglify.assets;
-		delete config.clean.assets;
-		delete config.concat.assets;
-	}
+	// Add the assets
+	require(path.join(__dirname, 'assets.js'))(grunt, config, build.assets);
 
 	// If we have files to copy, add the copy tasks
 	if (grunt.config.get('hasCopy'))

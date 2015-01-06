@@ -20,10 +20,5 @@ module.exports = {
 				pure_funcs: ['include', 'Debug.log', 'Debug.info', 'Debug.warn', 'Debug.debug', 'Debug.error']
 			}
 		}
-	},
-	assets: {
-		files: {
-			'<%= jsFolder %>/assets.js': '<%= build.js.assets %>'
-		}
 	}
 };

@@ -16,16 +16,6 @@ module.exports = {
 			'replace:main'
 		]
 	},
-	assets: {
-		files: [
-			'Gruntfile.js',
-			'<%= build.js.assets %>',
-			'<%= build.file %>'
-		],
-		tasks: [
-			'concat:assets'
-		]
-	},
 	css: {
 		files: [
 			'<%= build.css.main %>',

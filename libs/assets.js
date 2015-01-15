@@ -22,7 +22,6 @@ module.exports = function(grunt, config, assets)
 
 		// Loop through all the build assets
 		_.each(assets, function(files, key){
-			console.log(key);
 			var dest = '<%= jsFolder %>/' + key + '.js';
 			var src = '<%= build.assets.' + key + ' %>';
 			config.uglify.assets.files[dest] = src;

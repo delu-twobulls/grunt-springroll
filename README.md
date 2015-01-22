@@ -62,8 +62,9 @@ These are the list of grunt tasks for building the project.
 Task | Description
 ---|---
 **build** | Build the project and libraries in release mode.
-**build-dev** | Build the project and libraries in debug mode.
+**build-debug** | Build the project and libraries in debug mode.
 **default** | Alias for **build** task.
+**debug** | Alias for **build-debug** task.
 **dev** | Development mode to build the project, this watches source files and auto-rebuilds whenever there's a change in CSS, main JavaScript or assets.
 **dev-main** | Development mode which watches source JavaScript files only and auto-rebuilds whenever there's a change. Faster than **dev** because it excludes assets building.
 **assets** | Minify all assets JavaScript files

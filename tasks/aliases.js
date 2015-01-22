@@ -7,7 +7,21 @@ module.exports = function(grunt)
 	);
 
 	grunt.registerTask(
+		'debug',
+		'Default task to build all the project code in debug mode', 
+		['build-debug']
+	);
+
+	// backward compatibility
+	// deprecated
+	grunt.registerTask(
 		'build-dev',
+		'Synonym for the build-debug task',
+		['build-debug']
+	);
+
+	grunt.registerTask(
+		'build-debug',
 		'Build the games and the libraries in debug mode', [
 			'clean:main',
 			'jshint:main',
@@ -109,7 +123,7 @@ module.exports = function(grunt)
 	grunt.registerTask(
 		'qa',
 		'Do QA on the games generate and run', [
-			'build:dev',
+			'debug',
 			'run'
 		]
 	);

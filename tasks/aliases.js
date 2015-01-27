@@ -133,4 +133,13 @@ module.exports = function(grunt)
 		'Preview the game by running a node server and opening it in the web browser', 
 		['connect:server']
 	);
+
+	grunt.registerTask(
+		'release',
+		'Create a release version of the app', [
+			'version:current',
+			'default',
+			'imagemin'			
+		]
+	);
 };

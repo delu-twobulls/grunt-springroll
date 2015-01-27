@@ -75,6 +75,7 @@ Task | Description
 **clean-libs** | Delete all downloaded Bower components and library build files
 **qa** | Build the project in debug mode and run in the web browser by running a NodeJS server
 **run** | Preview the deploy index.html file in a web browser by running a NodeJS server
+**release** | Default build of the and image minification (minification takes some time to complete)
 **version** | Control the project versioning, and update the version number in **springroll.json** and **bower.json**. This task requires a single argument, for instance, **version:1.0.0** (uses the [Semantic Version](http://semver.org/) format) or increment the version using **version:major**, **version:minor** or **version:patch**. Change the version _before_ doing a build.
 
 ## Build File

@@ -28,7 +28,7 @@
 		"grunt-simple-version": "~0.2.0",
 		"grunt-contrib-copy": "~0.7.0",
 		"prompt": "~0.2.13",
-		"lodash": "~2.4.1",
+		"lodash": "~3.0.0",
 		"semver": "~4.2.0"
 	},
 	"peerDependencies": {

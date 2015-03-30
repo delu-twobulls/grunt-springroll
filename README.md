@@ -67,7 +67,7 @@ Task | Description
 **debug** | Alias for **build-debug** task.
 **dev** | Development mode to build the project, this watches source files and auto-rebuilds whenever there's a change in CSS, main JavaScript or assets.
 **dev-main** | Development mode which watches source JavaScript files only and auto-rebuilds whenever there's a change. Faster than **dev** because it excludes assets building.
-**config** | Concatinate the JSON source files into a single release configuration file. The configuration file is required for all project and contains useful implementation-sepecific information to be loaded at run-time, like level data, sound library, etc. All JS-style code blocks and comments are removed from the source files. 
+**config** | Concatenate the JSON source files into a single release configuration file. The configuration file is required for all project and contains useful implementation-sepecific information to be loaded at run-time, like level data, sound library, etc. All JS-style code blocks and comments are removed from the source files. 
 **config-debug** | The debug version of the **config** task. 
 **assets** | Minify all assets JavaScript files
 **assets-debug** | Combine all assets JavaScript files with source maps for better debugging
@@ -89,7 +89,7 @@ Property | Type | Description
 **version** | string | The [semantic versioning](http://semver.org/) number
 **main** | array | The list of files to use to build the project, this can be a mix of JavaScript and CSS/LESS files. Note: the order of the files is how the output is built.
 **libraries** | array | The list of external file dependencies imported by Bower. Note: the order of the files is how the output is built.
-**config** | string | The path to the JSON configuration files. This get concatinated and exported. See [grunt-concat-json](https://github.com/springroll/grunt-concat-json) for more information about concatinating JSON.
+**config** | string | The path to the JSON configuration files. This get concatenated and exported. See [grunt-concat-json](https://github.com/springroll/grunt-concat-json) for more information about concatenating JSON.
 **mainDebug** _(optional)_ | array | The same as `main` except that this file list is only used when building in `dev` task.
 **librariesDebug** _(optional)_ | array | The same as `libraries` except that this file list is only used when building in `dev` task.
 **assets** _(optional)_ | array, object | A list of published JavaScript files that should be minified and combined to create an `assets.js` file alongside main and libraries. The common use-case for this list is to minify large EaselJS assets exported from Flash to increase the **dev** task build time. Note: assets are not run through JS hinting. Multiple asset files can also be created where the key is the file name (without ".js" or path) and the value is the array of files.
@@ -175,7 +175,7 @@ A _string_ defaults to "deploy/assets/config". The name of the output folder whi
 
 ### settings.options.configFile
 
-A _string_ defaults to "deploy/assets/config/config.json". The name of the output file which will contain the concatinated configuration JSON file.
+A _string_ defaults to "deploy/assets/config/config.json". The name of the output file which will contain the concatenated configuration JSON file.
 
 ### settings.*
 

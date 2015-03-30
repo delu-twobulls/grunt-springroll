@@ -131,7 +131,7 @@ module.exports = function(grunt)
 		'config',
 		'Combine the config JSONs within config/ into a single file', [
 			'curl:release',
-			'concat-json'
+			'concat-json:release'
 		]
 	);
 
@@ -139,7 +139,7 @@ module.exports = function(grunt)
 		'config-debug',
 		'Combine the config JSONs within config/ into a single file', [
 			'curl:debug',
-			'concat-json'
+			'concat-json:debug'
 		]
 	);
 };

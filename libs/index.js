@@ -49,6 +49,9 @@ module.exports = function(grunt, settings, undefined)
 			// The output folders
 			jsFolder: options.jsFolder || '<%= distFolder %>/assets/js',
 			cssFolder: options.cssFolder || '<%= distFolder %>/assets/css',
+			
+			// Configuration properties
+			configFile: options.configFile || '<%= distFolder %>/assets/config/config.json',
 
 			// Save the current working directory
 			cwd: projectDir

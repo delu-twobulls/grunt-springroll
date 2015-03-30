@@ -24,5 +24,13 @@ module.exports = {
 		tasks: [
 			'less:development'
 		]
+	},
+	config: {
+		files: [
+			'<%= build.config %>/**/*.json'
+		],
+		tasks: [
+			'config-debug'
+		]
 	}
 };

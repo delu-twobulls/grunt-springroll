@@ -29,6 +29,8 @@ module.exports = function(grunt)
 			'replace:main',
 			'clean:css',
 			'less:development',
+			'clean:config',
+			'config-debug',
 			'libs-debug',
 			'assets-debug',
 		]
@@ -42,6 +44,8 @@ module.exports = function(grunt)
 			'uglify:main',
 			'clean:css',
 			'less:release',
+			'clean:config',
+			'config',
 			'libs',
 			'assets'
 		]
@@ -73,52 +77,41 @@ module.exports = function(grunt)
 		]
 	);
 
+	// This is the empty task so that the 
+	// libs and libs-debug tasks don't fail
+	grunt.registerTask('libs-copy', []);
+
+	// Check if we have library files to copy
 	if (grunt.config.get('hasCopy'))
 	{
 		grunt.registerTask(
-			'libs',
-			'Import external client-side dependencies using Bower', [
-				'clean:libraries',
-				'bower:install',
-				'copy',
-				'uglify:libraries',
-				'less:libraries'
-			]
-		);
-
-		grunt.registerTask(
-			'libs-debug',
-			'Import using Bower and build debug versions of libraries', [
-				'clean:libraries',
-				'bower:install',
-				'copy',
-				'concat:libraries',
-				'less:libraries-debug'
-			]
+			'libs-copy', 
+			'Copy library files (e.g. fonts, SWFs) to project',
+			['copy']
 		);
 	}
-	else
-	{
-		grunt.registerTask(
+
+	grunt.registerTask(
 		'libs',
-			'Import external client-side dependencies using Bower', [
-				'clean:libraries',
-				'bower:install',
-				'uglify:libraries',
-				'less:libraries'
-			]
-		);
+		'Import external client-side dependencies using Bower', [
+			'clean:libraries',
+			'bower:install',
+			'libs-copy',
+			'uglify:libraries',
+			'less:libraries'
+		]
+	);
 
-		grunt.registerTask(
-			'libs-debug',
-			'Import using Bower and build debug versions of libraries', [
-				'clean:libraries',
-				'bower:install',
-				'concat:libraries',
-				'less:libraries-debug'
-			]
-		);
-	}
+	grunt.registerTask(
+		'libs-debug',
+		'Import using Bower and build debug versions of libraries', [
+			'clean:libraries',
+			'bower:install',
+			'libs-copy',
+			'concat:libraries',
+			'less:libraries-debug'
+		]
+	);
 
 	grunt.registerTask(
 		'qa',
@@ -132,5 +125,21 @@ module.exports = function(grunt)
 		'run',
 		'Preview the game by running a node server and opening it in the web browser', 
 		['connect:server']
+	);
+
+	grunt.registerTask(
+		'config',
+		'Combine the config JSONs within config/ into a single file', [
+			'curl:release',
+			'concat-json'
+		]
+	);
+
+	grunt.registerTask(
+		'config-debug',
+		'Combine the config JSONs within config/ into a single file', [
+			'curl:debug',
+			'concat-json'
+		]
 	);
 };

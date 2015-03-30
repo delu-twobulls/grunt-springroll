@@ -48,6 +48,9 @@ module.exports = function(grunt, options)
 	if (!_.isUndefined(file.mainDebug) && !_.isArray(file.mainDebug))
 		grunt.fail.fatal('"mainDebug" must be an array of files in ' + filename);
 
+	if (!file.config || !_.isString(file.config)) 
+		grunt.fail.fatal('"config" must be a string, which is a path to configuration source JSON files');
+
 	var assets = null;
 
 	// Check for assets, this can either be an array of files which
@@ -108,9 +111,12 @@ module.exports = function(grunt, options)
 		// The semantic version of the app
 		version: file.version,
 
+		// The configuration source directory
+		config: file.config,
+
 		// The name of the springroll file
 		file : filename,
-
+		
 		// Files to copy
 		librariesCopy: librariesCopy,
 

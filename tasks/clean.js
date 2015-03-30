@@ -13,5 +13,6 @@ module.exports = {
 		'<%= jsFolder %>/libraries.js.map',
 		'<%= jsFolder %>/libraries.js'
 	],
-	components: ['<%= components %>']
+	components: ['<%= components %>'],
+	config: ['<%= configFile %>']
 };

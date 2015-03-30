@@ -1,6 +1,6 @@
 {
 	"name": "grunt-springroll",
-	"version": "0.6.6",
+	"version": "0.7.0",
 	"description": "Tasks building SpringRoll projects",
 	"main": "./libs/index.js",
 	"author": {
@@ -23,9 +23,10 @@
 		"grunt-springroll-helper": "~0.1.1",
 		"grunt-text-replace": "~0.4.0",
 		"grunt-contrib-connect": "~0.9.0",
-		"load-grunt-config": "~0.16.0",
 		"grunt-simple-version": "~0.2.0",
+		"grunt-concat-json": "*",
 		"grunt-contrib-copy": "~0.8.0",
+		"load-grunt-config": "~0.16.0",
 		"prompt": "~0.2.13",
 		"lodash": "~3.3.1",
 		"semver": "~4.3.1"

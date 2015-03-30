@@ -89,7 +89,7 @@ Property | Type | Description
 **version** | string | The [semantic versioning](http://semver.org/) number
 **main** | array | The list of files to use to build the project, this can be a mix of JavaScript and CSS/LESS files. Note: the order of the files is how the output is built.
 **libraries** | array | The list of external file dependencies imported by Bower. Note: the order of the files is how the output is built.
-**config** | string | The path to the JSON configuration files. This get concatinated and exported.
+**config** | string | The path to the JSON configuration files. This get concatinated and exported. See [grunt-concat-json](https://github.com/springroll/grunt-concat-json) for more information about concatinating JSON.
 **mainDebug** _(optional)_ | array | The same as `main` except that this file list is only used when building in `dev` task.
 **librariesDebug** _(optional)_ | array | The same as `libraries` except that this file list is only used when building in `dev` task.
 **assets** _(optional)_ | array, object | A list of published JavaScript files that should be minified and combined to create an `assets.js` file alongside main and libraries. The common use-case for this list is to minify large EaselJS assets exported from Flash to increase the **dev** task build time. Note: assets are not run through JS hinting. Multiple asset files can also be created where the key is the file name (without ".js" or path) and the value is the array of files.
@@ -169,9 +169,13 @@ A _string_ defaults to "deploy/assets/js". The base output folder for JavaScript
 
 A _string_ defaults to "deploy/assets/css". The base output folder for CSS files (libraries.css and main.css).
 
+### settings.options.configFolder
+
+A _string_ defaults to "deploy/assets/config". The name of the output folder which will contain the configuration files.
+
 ### settings.options.configFile
 
-A _string_ defaults to "deploy/assets/config/config.json". The name of the output file which will contain the concatinated configuration JSON file. See [grunt-concat-json](https://github.com/springroll/grunt-concat-json) for more information.
+A _string_ defaults to "deploy/assets/config/config.json". The name of the output file which will contain the concatinated configuration JSON file.
 
 ### settings.*
 

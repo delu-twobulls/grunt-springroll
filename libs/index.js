@@ -51,7 +51,8 @@ module.exports = function(grunt, settings, undefined)
 			cssFolder: options.cssFolder || '<%= distFolder %>/assets/css',
 			
 			// Configuration properties
-			configFile: options.configFile || '<%= distFolder %>/assets/config/config.json',
+			configFolder: options.configFolder || '<%= distFolder %>/assets/config',
+			configFile: options.configFile || '<%= configFolder %>/config.json',
 
 			// Save the current working directory
 			cwd: projectDir

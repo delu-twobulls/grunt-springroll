@@ -1,6 +1,6 @@
 {
 	"name": "grunt-springroll",
-	"version": "0.7.0",
+	"version": "0.7.1",
 	"description": "Tasks building SpringRoll projects",
 	"main": "./libs/index.js",
 	"author": {

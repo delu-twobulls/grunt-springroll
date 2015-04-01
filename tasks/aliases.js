@@ -130,7 +130,6 @@ module.exports = function(grunt)
 	grunt.registerTask(
 		'config',
 		'Combine the config JSONs within config/ into a single file', [
-			'curl:release',
 			'concat-json:release'
 		]
 	);
@@ -138,7 +137,6 @@ module.exports = function(grunt)
 	grunt.registerTask(
 		'config-debug',
 		'Combine the config JSONs within config/ into a single file', [
-			'curl:debug',
 			'concat-json:debug'
 		]
 	);

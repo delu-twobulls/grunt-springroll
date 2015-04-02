@@ -20,9 +20,16 @@ module.exports = function(grunt)
 		['build-debug']
 	);
 
+	// Override-able tasks for adding to the build
+	grunt.registerTask('pre-build', []);
+	grunt.registerTask('post-build', []);
+	grunt.registerTask('pre-build-debug', []);
+	grunt.registerTask('post-build-debug', []);
+
 	grunt.registerTask(
 		'build-debug',
 		'Build the games and the libraries in debug mode', [
+			'pre-build-debug',
 			'clean:main',
 			'jshint:main',
 			'concat:main',
@@ -33,12 +40,14 @@ module.exports = function(grunt)
 			'config-debug',
 			'libs-debug',
 			'assets-debug',
+			'post-build-debug'
 		]
 	);
 
 	grunt.registerTask(
 		'build',
 		'Build the games and the libraries in release mode', [
+			'pre-build',
 			'clean:main',
 			'jshint:main',
 			'uglify:main',
@@ -47,7 +56,8 @@ module.exports = function(grunt)
 			'clean:config',
 			'config',
 			'libs',
-			'assets'
+			'assets',
+			'post-build'
 		]
 	);
 
@@ -77,19 +87,12 @@ module.exports = function(grunt)
 		]
 	);
 
-	// This is the empty task so that the 
-	// libs and libs-debug tasks don't fail
-	grunt.registerTask('libs-copy', []);
-
 	// Check if we have library files to copy
-	if (grunt.config.get('hasCopy'))
-	{
-		grunt.registerTask(
-			'libs-copy', 
-			'Copy library files (e.g. fonts, SWFs) to project',
-			['copy']
-		);
-	}
+	grunt.registerTask(
+		'libs-copy', 
+		'Copy library files (e.g. fonts, SWFs) to project',
+		(grunt.config.get('hasCopy') ? ['copy'] : [])
+	);
 
 	grunt.registerTask(
 		'libs',

@@ -79,6 +79,17 @@ Task | Description
 **run** | Preview the deploy index.html file in a web browser by running a NodeJS server
 **version** | Control the project versioning, and update the version number in **springroll.json** and **bower.json**. This task requires a single argument, for instance, **version:1.0.0** (uses the [Semantic Version](http://semver.org/) format) or increment the version using **version:major**, **version:minor** or **version:patch**. Change the version _before_ doing a build.
 
+## Task Hooks
+
+These are the list of grunt tasks which are safe to be overridden using `grunt.registerTask()`. These task aliases are empty and contain no sub-tasks.
+
+Task | Description
+---|---
+**pre-build** | Before the build starts. 
+**pre-build-debug** | Before the debug build starts.
+**post-build** | After the build ends.
+**post-build-debug** | After the debug build ends.
+
 ## Build File
 
 The **springroll.json** file contains the list of all required JavaScript and CSS files in order to build the project. Below describes the different fields of this file.

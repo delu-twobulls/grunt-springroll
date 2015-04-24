@@ -21,15 +21,15 @@ module.exports = function(grunt)
 	);
 
 	// Override-able tasks for adding to the build
-	grunt.registerTask('pre-build', []);
-	grunt.registerTask('post-build', []);
-	grunt.registerTask('pre-build-debug', []);
-	grunt.registerTask('post-build-debug', []);
+	grunt.registerTask('_pre-build', []);
+	grunt.registerTask('_post-build', []);
+	grunt.registerTask('_pre-build-debug', []);
+	grunt.registerTask('_post-build-debug', []);
 
 	grunt.registerTask(
 		'build-debug',
 		'Build the games and the libraries in debug mode', [
-			'pre-build-debug',
+			'_pre-build-debug',
 			'clean:main',
 			'jshint:main',
 			'concat:main',
@@ -40,14 +40,14 @@ module.exports = function(grunt)
 			'config-debug',
 			'libs-debug',
 			'assets-debug',
-			'post-build-debug'
+			'_post-build-debug'
 		]
 	);
 
 	grunt.registerTask(
 		'build',
 		'Build the games and the libraries in release mode', [
-			'pre-build',
+			'_pre-build',
 			'clean:main',
 			'jshint:main',
 			'uglify:main',
@@ -57,7 +57,7 @@ module.exports = function(grunt)
 			'config',
 			'libs',
 			'assets',
-			'post-build'
+			'_post-build'
 		]
 	);
 

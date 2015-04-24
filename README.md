@@ -85,10 +85,10 @@ These are the list of grunt tasks which are safe to be overridden using `grunt.r
 
 Task | Description
 ---|---
-**pre-build** | Before the build starts. 
-**pre-build-debug** | Before the debug build starts.
-**post-build** | After the build ends.
-**post-build-debug** | After the debug build ends.
+**_pre-build** | Before the build starts. 
+**_pre-build-debug** | Before the debug build starts.
+**_post-build** | After the build ends.
+**_post-build-debug** | After the debug build ends.
 
 ## Build File
 

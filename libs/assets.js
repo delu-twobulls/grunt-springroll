@@ -33,7 +33,7 @@ module.exports = function(grunt, config, assets)
 			};
 
 			// Debug tasks
-			debugTasks.push('concat:' + key);
+			debugTasks.push('newer:concat:' + key);
 		});
 
 		// Release tasks

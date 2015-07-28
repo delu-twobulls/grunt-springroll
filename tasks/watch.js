@@ -11,9 +11,9 @@ module.exports = {
 			'<%= build.file %>'
 		],
 		tasks: [
-			'jshint:main', 
-			'concat:main', 
-			'replace:main'
+			'newer:jshint:main', 
+			'newer:concat:main', 
+			'newer:replace:main'
 		]
 	},
 	css: {
@@ -22,7 +22,7 @@ module.exports = {
 			'<%= build.file %>'
 		],
 		tasks: [
-			'less:development'
+			'newer:less:development'
 		]
 	},
 	config: {
@@ -30,7 +30,7 @@ module.exports = {
 			'<%= build.config %>/**/*.json'
 		],
 		tasks: [
-			'config-debug'
+			'newer:concat-json:debug'
 		]
 	}
 };

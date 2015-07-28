@@ -107,7 +107,7 @@ module.exports = function(grunt, settings, undefined)
 	// If we have files to copy, add the copy tasks
 	if (grunt.config.get('hasCopy'))
 	{
-		config.copy = build.librariesCopy;
+		config.copy = _.extend({}, config.copy, build.librariesCopy);
 	}
 
 	// If we should called initConfig right away

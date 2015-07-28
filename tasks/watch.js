@@ -13,7 +13,7 @@ module.exports = {
 		tasks: [
 			'newer:jshint:main', 
 			'newer:concat:main', 
-			'newer:replace:main'
+			'replace:main'
 		]
 	},
 	css: {

@@ -1,22 +1,25 @@
 module.exports = {
 	// global watch options
-	options: {
+	options:
+	{
 		reload: true,
 		atBegin: true
 	},
-	main: {
+	main:
+	{
 		files: [
 			'Gruntfile.js',
 			'<%= build.js.main %>',
 			'<%= build.file %>'
 		],
 		tasks: [
-			'newer:jshint:main', 
-			'newer:concat:main', 
+			'newer:jshint:main',
+			'newer:concat:main',
 			'replace:main'
 		]
 	},
-	css: {
+	css:
+	{
 		files: [
 			'<%= build.css.main %>',
 			'<%= build.file %>'
@@ -25,10 +28,10 @@ module.exports = {
 			'newer:less:development'
 		]
 	},
-	config: {
+	config:
+	{
 		files: [
-			'<%= build.config %>/**/*.json',
-			'<%= build.config %>/**/*.js'
+			'<%= build.config %>/**/*.{json,js}'
 		],
 		tasks: [
 			'newer:concat-json:debug'

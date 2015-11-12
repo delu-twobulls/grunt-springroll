@@ -27,7 +27,8 @@ module.exports = {
 	},
 	config: {
 		files: [
-			'<%= build.config %>/**/*.json'
+			'<%= build.config %>/**/*.json',
+			'<%= build.config %>/**/*.js'
 		],
 		tasks: [
 			'newer:concat-json:debug'

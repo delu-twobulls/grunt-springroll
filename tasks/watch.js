@@ -8,33 +8,33 @@ module.exports = {
 	main:
 	{
 		files: [
-			'Gruntfile.js',
-			'<%= build.js.main %>',
-			'<%= build.file %>'
+			"Gruntfile.js",
+			"<%= build.js.main %>",
+			"<%= build.file %>"
 		],
 		tasks: [
-			'newer:jshint:main',
-			'newer:concat:main',
-			'replace:main'
+			"newer:jshint:main",
+			"newer:concat:main",
+			"replace:main"
 		]
 	},
 	css:
 	{
 		files: [
-			'<%= build.css.main %>',
-			'<%= build.file %>'
+			"<%= build.css.main %>",
+			"<%= build.file %>"
 		],
 		tasks: [
-			'newer:less:development'
+			"newer:less:development"
 		]
 	},
 	config:
 	{
 		files: [
-			'<%= build.config %>/**/*.{json,js}'
+			"<%= build.config %>/**/*.{json,js}"
 		],
 		tasks: [
-			'newer:concat-json:debug'
+			"newer:concat-json:debug"
 		]
 	}
 };

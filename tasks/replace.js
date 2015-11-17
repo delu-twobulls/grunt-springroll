@@ -1,6 +1,6 @@
 module.exports = {
 	main: {
-		src: '<%= jsFolder %>/main.js',
+		src: "<%= jsFolder %>/main.js",
 		overwrite: true,
 		replacements: [
 			{

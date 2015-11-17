@@ -63,14 +63,22 @@ module.exports = function(grunt)
 
 	grunt.registerTask(
 		"dev",
-		"Development mode to build the project main, css and assets", 
-		["clean:newer", "watch"]
+		"Development mode to build the project main, css and assets", [
+			"clean:newer",
+			"clean:main",
+			"clean:css",
+			"clean:config",
+			"watch"
+		]
 	);
 
 	grunt.registerTask(
 		"dev-main",
-		"Development mode to build the project - faster, only watches main source (no assets or css)", 
-		["clean:newer", "watch:main"]
+		"Development mode to build the project - faster, only watches main source (no assets or css)", [
+			"clean:newer", 
+			"clean:main",
+			"watch:main"
+		]
 	);
 
 	grunt.registerTask(

@@ -20,7 +20,7 @@ module.exports = {
 
 		fs.readdirSync(path.join(folder, 'node_modules'))
 			.filter(function(name) {
-				return name.indexOf('grunt-') === 0 && name.indexOf('grunt-springroll') === -1;
+				return name.indexOf('grunt-') === 0 && name !== 'grunt-springroll';
 			})
 			.forEach(function(folder) {
 				grunt.loadNpmTasks(folder);

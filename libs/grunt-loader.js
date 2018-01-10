@@ -14,9 +14,9 @@ module.exports = {
 	 * @return void
 	 */
 	load: function(grunt, folder) {
-    var lastDirectory = process.cwd();
+		var lastDirectory = process.cwd();
 
-    process.chdir(folder);
+		process.chdir(folder);
 
 		fs.readdirSync(path.join(folder, 'node_modules'))
 			.filter(function(name) {
@@ -25,7 +25,7 @@ module.exports = {
 			.forEach(function(folder) {
 				grunt.loadNpmTasks(folder);
 			});
-    
-    process.chdir(lastDirectory);
+
+		process.chdir(lastDirectory);
 	},
 };

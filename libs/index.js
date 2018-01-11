@@ -4,6 +4,7 @@ module.exports = function(grunt, settings, undefined)
 	var _ = require('lodash'),
 		path = require('path'),
 		loader = require('load-grunt-config'),
+		gruntLoader = require('./grunt-loader'),
 		base = path.dirname(__dirname);
 	
 	// Get the settings and options
@@ -26,6 +27,11 @@ module.exports = function(grunt, settings, undefined)
 
 	// We need to load the local grunt plugins
 	var projectDir = process.cwd();
+
+	// load both project and this plugin's grunt modules manually to account for NPM 3+ flattening
+	gruntLoader.load(grunt, projectDir);
+	gruntLoader.load(grunt, pluginFolder);
+
 	process.chdir(pluginFolder);
 
 	// The build file which contains all the list of files to build
@@ -70,16 +76,14 @@ module.exports = function(grunt, settings, undefined)
 
 		// auto grunt.initConfig()
 		init: false,
-
-		// Load the grunt tasks
-		loadGruntTasks : { pattern: [
-			'grunt-*',
-			'!grunt-springroll'
-		]},
+		
+		// don't load grunt tasks, since we'll load them manually (due to NPM 2 vs. NPM 3+ behavioral differences)
+		loadGruntTasks: false,
 
 		// Data based into config
 		data: data
 	});
+
 	process.chdir(projectDir);
 
 	// Project-specific config
@@ -91,11 +95,8 @@ module.exports = function(grunt, settings, undefined)
 		// Get the config, don't run
 		init: false, 
 
-		// We don't want to reload builder
-		loadGruntTasks: { pattern: [
-			'grunt-*',
-			'!grunt-springroll'
-		]}
+		// don't load grunt tasks, since we'll load them manually (due to NPM 2 vs. NPM 3+ behavioral differences)
+		loadGruntTasks: false
 	});
 
 	// Merge the configs

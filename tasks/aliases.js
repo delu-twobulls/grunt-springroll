@@ -31,7 +31,7 @@ module.exports = function(grunt)
 		"Build the games and the libraries in debug mode", [
 			"_pre-build-debug",
 			"clean:main",
-			"jshint:main",
+			// "jshint:main",
 			"concat:main",
 			"babel",
 			"replace:main",
@@ -50,7 +50,7 @@ module.exports = function(grunt)
 		"Build the games and the libraries in release mode", [
 			"_pre-build",
 			"clean:main",
-			"jshint:main",
+			// "jshint:main",
 			"concat:mainRelease",
 			"babel",
 			"uglify:main",

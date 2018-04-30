@@ -13,8 +13,9 @@ module.exports = {
 			"<%= build.file %>"
 		],
 		tasks: [
-			"newer:jshint:main",
+			// "newer:jshint:main",
 			"newer:concat:main",
+			"babel",
 			"replace:main"
 		]
 	},

@@ -191,3 +191,5 @@ A _string_ defaults to "deploy/assets/config/config.json". The name of the outpu
 ### settings.*
 
 Any additional arguments to be accessible by the Grunt cofnig. The data to set which can be accessible by all Grunt tasks, for instance `{ "name": "MyApp"}` would allow a substitution `<%= name %>` which would resolve to _MyApp_.
+
+if you are using anything from babel-polyfill (e.g. async/await) you must include that dep manually in your project

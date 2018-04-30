@@ -1,12 +1,7 @@
 module.exports = {
-	libraries: {
-		files: {
-			"<%= jsFolder %>/libraries.js": "<%= build.js.libraries %>"
-		}
-	},
 	main: {
 		files: {
-			"<%= jsFolder %>/main.js": "<%= build.js.main %>"
+			"<%= jsFolder %>/main.js": "<%= jsFolder %>/main.js"
 		},
 		options: {
 			compress: {

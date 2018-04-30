@@ -50,7 +50,9 @@ module.exports = function(grunt)
 		"Build the games and the libraries in release mode", [
 			"_pre-build",
 			"clean:main",
-			// "jshint:main",
+			"jshint:main",
+			"concat:mainRelease",
+			"babel",
 			"uglify:main",
 			"clean:css",
 			"less:release",
@@ -109,7 +111,7 @@ module.exports = function(grunt)
 			"clean:libraries",
 			"bower:install",
 			"libs-copy",
-			"uglify:libraries",
+			"concat:librariesMin",
 			"less:libraries"
 		]
 	);

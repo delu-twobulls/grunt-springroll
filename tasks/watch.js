@@ -10,12 +10,11 @@ module.exports = {
 		files: [
 			"Gruntfile.js",
 			"<%= build.js.main %>",
-			"<%= build.file %>"
+			"<%= build.file %>",
+			"src/**/*.js"
 		],
 		tasks: [
-			// "newer:jshint:main",
-			"newer:concat:main",
-			"babel",
+			"rollup",
 			"replace:main"
 		]
 	},

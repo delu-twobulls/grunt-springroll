@@ -1,8 +1,8 @@
 module.exports = {
-	options: {
-		sourceMap: true
-	},
 	libraries: {
+		options: {
+			sourceMap: true
+		},
 		dest: "<%= jsFolder %>/libraries.js",
 		src: ["<%= build.js.librariesDebug %>"],
 		nonull: true
@@ -10,16 +10,6 @@ module.exports = {
 	librariesMin: {
 		dest: "<%= jsFolder %>/libraries.js",
 		src: ["<%= build.js.libraries %>"],
-		nonull: true
-	},
-	main: {
-		dest: "<%= jsFolder %>/main.js",
-		src: ["<%= build.js.mainDebug %>"],
-		nonull: true
-	},
-	mainRelease: {
-		dest: "<%= jsFolder %>/main.js",
-		src: ["<%= build.js.main %>"],
 		nonull: true
 	}
 };

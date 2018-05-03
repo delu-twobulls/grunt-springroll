@@ -17,7 +17,8 @@ module.exports = function(grunt)
 			]
 	    }
 	});
-	
+
+	grunt.loadNpmTasks('grunt-rollup');
 	grunt.loadNpmTasks('grunt-newer');
 	grunt.loadNpmTasks('grunt-simple-version');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
